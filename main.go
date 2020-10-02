@@ -1,5 +1,60 @@
 package billutilities
 
+import (
+	"reflect"
+)
+
+// "IndexOf | EXAMPLES"
+// IndexOf([]interface{1,2,3,"Bill","Go","COOL"},"Bill")
+// will reture index 3 as matched
+func IndexOf(params ...interface{}) int {
+	arr := reflect.ValueOf(params[0])
+	target_element := reflect.ValueOf(params[1]).Interface()
+
+	for index := 0; index < arr.Len(); index++ {
+		if arr.Index(index).Interface() == target_element {
+			return index
+		}
+	}
+
+	return -1
+}
+
+// IndexOfAll([]int{1, 2, 1, 3, 1, 1}, 1) // [0 2 4 5]
+func IndexOfAll(params ...interface{}) []int {
+	arr := reflect.ValueOf(params[0])
+	target_element := reflect.ValueOf(params[1]).Interface()
+	result_all_match := []int{}
+	for index := 0; index < arr.Len(); index++ {
+		if arr.Index(index).Interface() == target_element {
+			result_all_match = append(result_all_match, index)
+		}
+	}
+
+	if len(result_all_match) != 0 {
+		return result_all_match
+	}
+
+	return []int{-1}
+}
+
+// XProduct([]int{1,2,3},[]string{"a","b","c"}) //  [[1 a] [2 a] [3 a] [1 b] [2 b] [3 b] [1 c] [2 c] [3 c]]
+func XProduct(params ...interface{}) [][]interface{} {
+	arr_first := reflect.ValueOf(params[0])
+	arr_second := reflect.ValueOf(params[1])
+	total_compond_length := arr_first.Len() * arr_second.Len()
+
+	result_arr := make([][]interface{}, total_compond_length)
+
+	for i := 0; i < total_compond_length; i++ {
+		result_arr[i] = []interface{}{
+			arr_first.Index(i % arr_first.Len()).Interface(),
+			arr_second.Index((i / arr_first.Len()) % arr_second.Len()).Interface(),
+		}
+	}
+	return result_arr
+}
+
 // MAP
 func MapGeneral(arr_i []interface{}, fn func(interface{}) interface{}) []interface{} {
 	arm := make([]interface{}, len(arr_i))
