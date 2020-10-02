@@ -1,7 +1,5 @@
 package billutilities
 
-const MAX int = 9999
-
 // MAP
 func MapGeneral(arr_i []interface{}, fn func(interface{}) interface{}) []interface{} {
 	arm := make([]interface{}, len(arr_i))
