@@ -8,6 +8,17 @@ import (
 	"strings"
 )
 
+func Includes(params ...interface{}) bool {
+	arr := reflect.ValueOf(params[0])
+	target_element := reflect.ValueOf(params[1]).Interface()
+	for index := 0; index < arr.Len(); index++ {
+		if arr.Index(index).Interface() == target_element {
+			return true
+		}
+	}
+	return false
+}
+
 func Filter(arr interface{}, fn func(interface{}) bool) interface{} {
 	ref_arr := reflect.ValueOf(arr)
 	result_arr := []interface{}{}
