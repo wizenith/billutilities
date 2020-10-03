@@ -8,6 +8,31 @@ import (
 	"strings"
 )
 
+func Zip(params ...interface{}) [][]interface{} {
+	boundary_length := 0
+
+	for _, el := range params {
+		curr_arr_len := reflect.ValueOf(el).Len()
+		if boundary_length < curr_arr_len {
+			boundary_length = curr_arr_len
+		}
+	}
+
+	res_arr := make([][]interface{}, boundary_length)
+
+	for i := 0; i < boundary_length; i++ {
+		res_arr[i] = make([]interface{}, 0)
+		for _, el := range params {
+			ref_el := reflect.ValueOf(el)
+			if ref_el.Len() > i {
+				res_arr[i] = append(res_arr[i], ref_el.Index(i).Interface())
+			}
+		}
+
+	}
+	return res_arr
+}
+
 func Includes(params ...interface{}) bool {
 	arr := reflect.ValueOf(params[0])
 	target_element := reflect.ValueOf(params[1]).Interface()
