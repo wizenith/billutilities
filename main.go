@@ -1,7 +1,11 @@
 package billutilities
 
 import (
+	"fmt"
+	"math"
 	"reflect"
+	"regexp"
+	"strings"
 )
 
 // "IndexOf | EXAMPLES"
@@ -280,4 +284,48 @@ func DedupString(arr []string) []string {
 		}
 	}
 	return arr_uniq
+}
+
+// CompactWhiteSpace | EXAMPLES
+// CompactWhiteSpace("Lorem    Ipsum") // "Lorem Ipsum"
+// CompactWhiteSpace("Lorem \n Ipsum") // "Lorem Ipsum"
+func CompactWhiteSpace(str string) string {
+	regex := regexp.MustCompile(`\s{2,}`)
+	return regex.ReplaceAllString(str, " ")
+}
+
+func MaxOf(nums ...float64) float64 {
+	max := math.Inf(-1)
+	for _, num := range nums {
+		max = math.Max(num, max)
+	}
+	return max
+}
+
+func ShowOnlyLast_N_Digit(str string, n_digit int, cover_with rune) string {
+	return strings.Repeat(string(cover_with), len(str)-n_digit) + str[len(str)-n_digit:]
+}
+
+func Average(nums ...float64) float64 {
+	var sum float64
+	for _, num := range nums {
+		sum += num
+	}
+	return (sum / float64(len(nums)))
+}
+
+func Capital(s string) string {
+	return strings.ToUpper(s[0:1]) + s[1:]
+}
+
+func Stringify(v interface{}) string {
+	return fmt.Sprintf("%v", v)
+}
+
+func IsEven(num int) bool {
+	return num%2 == 0
+}
+
+func IsOdd(num int) bool {
+	return num%2 == 1
 }
