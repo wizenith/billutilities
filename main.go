@@ -8,6 +8,20 @@ import (
 	"strings"
 )
 
+func Filter(arr interface{}, fn func(interface{}) bool) interface{} {
+	ref_arr := reflect.ValueOf(arr)
+	result_arr := []interface{}{}
+
+	for i := 0; i < ref_arr.Len(); i++ {
+		el := ref_arr.Index(i).Interface()
+		if fn(el) {
+			result_arr = append(result_arr, el)
+		}
+	}
+
+	return result_arr
+}
+
 // "IndexOf | EXAMPLES"
 // IndexOf([]interface{1,2,3,"Bill","Go","COOL"},"Bill")
 // will reture index 3 as matched
@@ -328,4 +342,8 @@ func IsEven(num int) bool {
 
 func IsOdd(num int) bool {
 	return num%2 == 1
+}
+
+func IsPowerOf2(n int) bool {
+	return n > 0 && (n&(n-1)) == 0
 }
