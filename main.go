@@ -6,7 +6,14 @@ import (
 	"reflect"
 	"regexp"
 	"strings"
+	"time"
 )
+
+func CronFnEveryBy(t time.Duration, fn func(...interface{}), params ...interface{}) {
+	for range time.Tick(t) {
+		fn(params...)
+	}
+}
 
 func Zip(params ...interface{}) [][]interface{} {
 	boundary_length := 0
