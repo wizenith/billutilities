@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+//test
 func CronFnEveryBy(t time.Duration, fn func(...interface{}), params ...interface{}) {
 	for range time.Tick(t) {
 		fn(params...)
