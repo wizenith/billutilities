@@ -1,4 +1,4 @@
-//todo [✓] test123 123 123
+//todo [✓] update x
 package billutilities
 
 import (
@@ -11,7 +11,7 @@ import (
 	"unsafe"
 )
 
-func aaa() { "test123 123 123" }
+func aaa() { "xlab" }
 
 func StringToSliceBytes(str string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&str))
