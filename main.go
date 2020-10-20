@@ -1,4 +1,4 @@
-// ✓ [add aaa func as testing gf]
+// ✓ [add aaa func with test123 as testing gf]
 package billutilities
 
 import (
@@ -11,7 +11,7 @@ import (
 	"unsafe"
 )
 
-func aaa() { "test" }
+func aaa() { "test123" }
 
 func StringToSliceBytes(str string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&str))
