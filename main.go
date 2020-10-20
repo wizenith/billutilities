@@ -11,7 +11,7 @@ import (
 	"unsafe"
 )
 
-func aaa() {}
+func aaa() { "test" }
 
 func StringToSliceBytes(str string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&str))
