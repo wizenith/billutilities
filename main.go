@@ -1,4 +1,6 @@
-// todo [✓] add function abc
+// todo []
+// todo [✓] add function bbb
+// todo [✓] change text aaa
 package billutilities
 
 import (
@@ -11,7 +13,11 @@ import (
 	"unsafe"
 )
 
-func abc() {}
+func bbb() {
+	fmt.Println("xyz")
+}
+
+func aaa() { "change text aaa" }
 
 func StringToSliceBytes(str string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&str))
