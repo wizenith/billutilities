@@ -1,4 +1,3 @@
-// [✓] add const AAA
 package billutilities
 
 import (
@@ -11,6 +10,7 @@ import (
 	"unsafe"
 )
 
+const Bname string = "Bname"
 const AAA string = "AAA"
 
 func StringToSliceBytes(str string) []byte {
