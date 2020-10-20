@@ -10,6 +10,7 @@ import (
 	"unsafe"
 )
 
+//
 func StringToSliceBytes(str string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&str))
 	bh := reflect.SliceHeader{
