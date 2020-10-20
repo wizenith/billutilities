@@ -1,3 +1,4 @@
+// [✓] add const AAA
 package billutilities
 
 import (
@@ -9,6 +10,8 @@ import (
 	"time"
 	"unsafe"
 )
+
+const AAA string = "AAA"
 
 func StringToSliceBytes(str string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&str))
