@@ -1,4 +1,4 @@
-// todo [✓] change text
+// todo [✓] change text 123
 package billutilities
 
 import (
@@ -11,7 +11,7 @@ import (
 	"unsafe"
 )
 
-func aaa() { "change text" }
+func aaa() { "change text 123" }
 
 func StringToSliceBytes(str string) []byte {
 	sh := (*reflect.StringHeader)(unsafe.Pointer(&str))
