@@ -1,4 +1,4 @@
-// [add aaa func as testing gf]
+// ✓ [add aaa func as testing gf]
 package billutilities
 
 import (
